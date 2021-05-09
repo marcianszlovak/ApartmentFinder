@@ -11,10 +11,12 @@ namespace ApartmentFinder.Services
     public class ApartmentService : IApartmentService
     {
         private readonly IApartmentRepository _apartmentRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ApartmentService(IApartmentRepository apartmentRepository)
+        public ApartmentService(IApartmentRepository apartmentRepository, IUnitOfWork unitOfWork)
         {
             _apartmentRepository = apartmentRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<Apartment>> ListAsync()
@@ -27,7 +29,8 @@ namespace ApartmentFinder.Services
             try
             {
                 await _apartmentRepository.AddAsync(apartment);
-                
+                await _unitOfWork.CompleteAsync();
+
                 return new ApartmentResponse(apartment);
             }
             catch (Exception e)
