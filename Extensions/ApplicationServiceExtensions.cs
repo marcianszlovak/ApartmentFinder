@@ -14,11 +14,11 @@ namespace ApartmentFinder.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
-
             services.AddAutoMapper(typeof(Startup));
-            
-            
+
+
             // Dependency Injection
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IApartmentRepository, ApartmentRepository>();
             services.AddScoped<IApartmentService, ApartmentService>();
             // Database Connection
