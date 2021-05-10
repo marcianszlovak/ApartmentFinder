@@ -58,6 +58,14 @@ namespace ApartmentFinder.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Locations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "Biatorbágy",
+                            County = "Pest"
+                        });
                 });
 
             modelBuilder.Entity("ApartmentFinder.Domain.Models.Apartment", b =>

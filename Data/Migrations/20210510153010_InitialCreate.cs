@@ -42,6 +42,11 @@ namespace ApartmentFinder.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Locations",
+                columns: new[] { "Id", "City", "County", "District" },
+                values: new object[] { 1, "Biatorbágy", "Pest", null });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Apartments_LocationId",
                 table: "Apartments",

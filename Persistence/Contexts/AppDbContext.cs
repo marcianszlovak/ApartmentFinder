@@ -17,7 +17,7 @@ namespace ApartmentFinder.Persistence.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
 
             modelBuilder.Entity<Apartment>().ToTable("Apartments");
             modelBuilder.Entity<Apartment>().HasKey(a => a.Id);
@@ -30,6 +30,13 @@ namespace ApartmentFinder.Persistence.Contexts
             modelBuilder.Entity<Location>().Property(l => l.Id).IsRequired().ValueGeneratedOnAdd();
             modelBuilder.Entity<Location>().HasMany(a => a.Apartments).WithOne(l => l.Location)
                 .HasForeignKey(l => l.LocationId);
+
+            modelBuilder.Entity<Location>().HasData(new Location
+            {
+                Id = 1,
+                City = "Biatorbágy",
+                County = "Pest"
+            });
         }
     }
 }

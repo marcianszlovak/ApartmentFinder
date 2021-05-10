@@ -4,6 +4,7 @@ namespace ApartmentFinder.Resources
 {
     public class SaveApartmentResource
     {
-        [Required] public string Description { get; set; }
+        [Required] [MinLength(30)] public string Description { get; set; }
+        [Required] public int LocationId { get; set; }
     }
 }

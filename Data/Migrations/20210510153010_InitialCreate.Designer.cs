@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApartmentFinder.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210510151533_InitialCreate")]
+    [Migration("20210510153010_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -60,6 +60,14 @@ namespace ApartmentFinder.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Locations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "Biatorbágy",
+                            County = "Pest"
+                        });
                 });
 
             modelBuilder.Entity("ApartmentFinder.Domain.Models.Apartment", b =>
