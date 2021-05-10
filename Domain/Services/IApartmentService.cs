@@ -9,6 +9,5 @@ namespace ApartmentFinder.Domain.Services
     {
         Task<IEnumerable<Apartment>> ListAsync();
         Task<ApartmentResponse> SaveAsync(Apartment apartment);
-        
     }
 }

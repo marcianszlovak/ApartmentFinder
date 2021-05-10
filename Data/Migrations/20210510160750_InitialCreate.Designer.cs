@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApartmentFinder.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210510153010_InitialCreate")]
+    [Migration("20210510160750_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace ApartmentFinder.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<int>("LocationId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Rooms")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

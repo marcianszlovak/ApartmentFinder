@@ -34,8 +34,9 @@ namespace ApartmentFinder.Controllers
         public async Task<IActionResult> PostAsync([FromBody] SaveApartmentResource resource)
         {
             var apartment = _mapper.Map<SaveApartmentResource, Apartment>(resource);
-            var result = await _apartmentService.SaveAsync(apartment);
 
+
+            var result = await _apartmentService.SaveAsync(apartment);
 
             if (!result.Success)
             {

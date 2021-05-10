@@ -3,6 +3,7 @@ namespace ApartmentFinder.Domain.Models
     public class Apartment
     {
         public int Id { get; set; }
+        public int Rooms { get; set; }
         public string Description { get; set; }
 
         public int LocationId { get; set; }

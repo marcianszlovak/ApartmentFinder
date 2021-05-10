@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using ApartmentFinder.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +21,7 @@ namespace ApartmentFinder.Persistence.Contexts
             modelBuilder.Entity<Apartment>().ToTable("Apartments");
             modelBuilder.Entity<Apartment>().HasKey(a => a.Id);
             modelBuilder.Entity<Apartment>().Property(a => a.Id).IsRequired().ValueGeneratedOnAdd();
+            modelBuilder.Entity<Apartment>().Property(a => a.Rooms).IsRequired();
             modelBuilder.Entity<Apartment>().Property(a => a.Description).IsRequired();
 
 
