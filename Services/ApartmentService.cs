@@ -35,7 +35,52 @@ namespace ApartmentFinder.Services
             }
             catch (Exception e)
             {
-                return new ApartmentResponse($"An error occurred when saving the apartment: {e.Message}");
+                return new ApartmentResponse($"An error occurred when saving the apartment: {e.Message}.");
+            }
+        }
+
+        public async Task<ApartmentResponse> UpdateAsync(int id, Apartment apartment)
+        {
+            var existingApartment = await _apartmentRepository.FindByIdAsync(id);
+
+            if (existingApartment == null)
+                return new ApartmentResponse($"Apartment with id [{id}] not found.");
+
+            existingApartment.Description = apartment.Description;
+            existingApartment.Rooms = apartment.Rooms;
+
+            try
+            {
+                _apartmentRepository.Update(existingApartment);
+                await _unitOfWork.CompleteAsync();
+
+                return new ApartmentResponse(existingApartment);
+            }
+            catch (Exception e)
+            {
+                return new ApartmentResponse($"An error occured when updating the category: {e.Message}.");
+            }
+        }
+
+        public async Task<ApartmentResponse> DeleteAsync(int id)
+        {
+            var existingApartment = await _apartmentRepository.FindByIdAsync(id);
+
+            if (existingApartment == null)
+            {
+                return new ApartmentResponse($"Apartment with id [{id}] not found.");
+            }
+
+            try
+            {
+                _apartmentRepository.Remove(existingApartment);
+                await _unitOfWork.CompleteAsync();
+
+                return new ApartmentResponse($"Successfully deleted Apartment with id [{id}].");
+            }
+            catch (Exception e)
+            {
+                return new ApartmentResponse($"An error occurred when deleting the apartment: {e.Message}");
             }
         }
     }
