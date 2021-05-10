@@ -17,11 +17,13 @@ namespace ApartmentFinder.Persistence.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
 
             modelBuilder.Entity<Apartment>().ToTable("Apartments");
             modelBuilder.Entity<Apartment>().HasKey(a => a.Id);
             modelBuilder.Entity<Apartment>().Property(a => a.Id).IsRequired().ValueGeneratedOnAdd();
             modelBuilder.Entity<Apartment>().Property(a => a.Description).IsRequired();
+
 
             modelBuilder.Entity<Location>().ToTable("Locations");
             modelBuilder.Entity<Location>().HasKey(l => l.Id);

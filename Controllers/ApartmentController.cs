@@ -1,8 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ApartmentFinder.Domain.Models;
 using ApartmentFinder.Domain.Services;
-using ApartmentFinder.Extensions;
 using ApartmentFinder.Resources;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
