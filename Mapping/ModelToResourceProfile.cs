@@ -9,6 +9,7 @@ namespace ApartmentFinder.Mapping
         public ModelToResourceProfile()
         {
             CreateMap<Apartment, ApartmentResource>();
+            CreateMap<Location, LocationResource>();
         }
     }
 }
